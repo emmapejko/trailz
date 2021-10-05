@@ -1,5 +1,12 @@
+/* eslint-disable max-len */
+/* eslint-disable no-return-assign */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
+/* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
@@ -227,6 +234,7 @@ const App = () => {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         })
+      // eslint-disable-next-line function-paren-newline
       );
     } else {
       setPosition({

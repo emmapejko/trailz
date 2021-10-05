@@ -1,3 +1,7 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-underscore-dangle */
 const { Event, User } = require('../database');
 const { wrapAsync } = require('../helpers');
 
@@ -10,7 +14,7 @@ const { wrapAsync } = require('../helpers');
 const doesEventExist = wrapAsync(async (req, res) => {
   const { eventId } = req.params;
   const event = await Event.findById(eventId);
-  res.send(event ? true : false);
+  res.send(!!event);
 });
 
 /**
@@ -29,14 +33,14 @@ const getAllEvents = wrapAsync(async (req, res) => {
           event.attendees.map(async (attendeeId) => {
             const attendeeObj = await User.findById(attendeeId);
             return `${attendeeObj.firstName} ${attendeeObj.lastName}`;
-          })
+          }),
         );
         return {
           ...event._doc, // not sure why you have to do this
           owner: `${firstName} ${lastName}`,
           attendees: mappedAttendees,
         };
-      })
+      }),
     );
     return res.send(mappedEvents);
   }
@@ -112,12 +116,12 @@ const removeEvent = wrapAsync(async (req, res) => {
   const { eventId } = req.params;
   await Event.findByIdAndDelete(eventId);
   const users = await User.find();
-  for (let user of users) {
+  for (const user of users) {
     user.registeredEvents = [...user.registeredEvents].filter(
-      (id) => id.toString() !== eventId
+      (id) => id.toString() !== eventId,
     );
     user.createdEvents = [...user.createdEvents].filter(
-      (id) => id.toString() !== eventId
+      (id) => id.toString() !== eventId,
     );
     await user.save();
   }
@@ -152,12 +156,12 @@ const unregisterForEvent = wrapAsync(async (req, res) => {
   const { userId, eventId } = req.params;
   const user = await User.findById(userId);
   user.registeredEvents = [...user.registeredEvents].filter(
-    (id) => id.toString() !== eventId
+    (id) => id.toString() !== eventId,
   );
   await user.save();
   const event = await Event.findById(eventId);
   event.attendees = [...event.attendees].filter(
-    (id) => id.toString() !== userId
+    (id) => id.toString() !== userId,
   );
   await event.save();
   res.send(true);

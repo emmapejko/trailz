@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * when an error occurs in an async router handler, the error
  * is manually passed to this function. This function simply
