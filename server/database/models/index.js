@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   User: require('./User'),
   Park: require('./Park'),

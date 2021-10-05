@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -25,7 +26,7 @@ app.use(
     secret: process.env.CLIENT_SECRET,
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 ); // initialize sessions
 app.use(passport.initialize()); // initialize passport
 app.use(passport.session()); // tell express to use passport to manage sessions

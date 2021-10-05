@@ -16,7 +16,7 @@ const getFavoriteParks = wrapAsync(async (req, res) => {
     favoriteParks.map(async (parkId) => {
       const mappedPark = await Park.findOne({ _id: parkId });
       return mappedPark;
-    })
+    }),
   );
   res.send(mappedParks);
 });
@@ -55,7 +55,7 @@ const removeFavoritePark = wrapAsync(async (req, res) => {
   const { userId, parkId } = req.params;
   const user = await User.findById(userId);
   user.favoriteParks = [...user.favoriteParks].filter(
-    (id) => id.toString() !== parkId
+    (id) => id.toString() !== parkId,
   );
   await user.save();
   res.send();
@@ -73,7 +73,7 @@ const removeFavoritePark = wrapAsync(async (req, res) => {
  */
 const defaultSearch = wrapAsync(async (req, res) => {
   const { data: results } = await axios.get(
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${GOOGLE_MAPS_API_KEY}&location=29.977000,-90.101570&radius=160934&keyword=trails&type=park`
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${GOOGLE_MAPS_API_KEY}&location=29.977000,-90.101570&radius=160934&keyword=trails&type=park`,
   );
   res.send(
     results.results.map((result) => ({
@@ -87,7 +87,7 @@ const defaultSearch = wrapAsync(async (req, res) => {
       icon: result.icon,
       // imageUrl: result.photos[0].photo_reference || null,
       // anchorTag: result.photos[0].html_attributions || null,
-    }))
+    })),
   );
 });
 
@@ -104,7 +104,7 @@ const defaultSearch = wrapAsync(async (req, res) => {
 const searchParks = wrapAsync(async (req, res) => {
   const { lat, lng, keyword } = req.params;
   const { data: results } = await axios.get(
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&type=park&key=${GOOGLE_MAPS_API_KEY}&keyword=${keyword}`
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&type=park&key=${GOOGLE_MAPS_API_KEY}&keyword=${keyword}`,
   );
   const mappedResults = results.results.map((result) => ({
     parkId: result.place_id,
@@ -142,7 +142,7 @@ const searchParks = wrapAsync(async (req, res) => {
       maxLat: -Infinity,
       minLng: Infinity,
       maxLng: -Infinity,
-    }
+    },
   );
   const { minLat, maxLat, minLng, maxLng } = locations;
   res.send({
