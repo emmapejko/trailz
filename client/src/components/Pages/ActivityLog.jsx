@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import * as d3 from 'd3';
 
 import BarChart from '../charts/BarChart.jsx';
+import CalendarChart from '../charts/CalendarChart.jsx';
 
 const ActivityLog = ({ user, events }) => {
-  const [data, setData] = useState([]);
+  const [barData, setBarData] = useState([]);
+  const [calData, setCalData] = useState([]);
 
   const getUserStatsByCategory = () => {
-    const activityData = [];
+    const data = []; //[[activityName, #]]
     const eventObj = {};
 
     events.forEach(event => {
@@ -18,22 +20,46 @@ const ActivityLog = ({ user, events }) => {
     });
 
     Object.keys(eventObj).forEach(activity => {
-      //activityData.push({ activity: activity, amount: eventObj[activity]});
-      activityData.push([ activity, eventObj[activity] ]);
+      data.push([ activity, eventObj[activity] ]);
     });
 
-    console.log(activityData);
-    setData(activityData);
+    console.log('EVENTS BY ACTIVITY TYPE: ', data);
+    setBarData(data);
   };
+
+  const getUserStatsByDate = () => {
+    const data = []; //[[date, number of events], [date2, num2], ... ]
+    const eventObj = {};
+
+    events.forEach(event => {
+      if (event.attendees.includes(`${user.firstName} ${user.lastName}`)) {
+        eventObj[event.time] = eventObj[event.time] ? eventObj[event.time] + 1 : 1;
+      }
+    });
+
+    Object.keys(eventObj).forEach(date => {
+      const year = date.slice(0, 4);
+      const month = date.slice(5, 7);
+      const day = date.slice(8, 10);
+      data.push([ new Date(year, month, day), eventObj[date] ]);
+    });
+
+    console.log('EVENTS BY DATE: ', data);
+    setCalData(data);
+  }
 
   useEffect(() => {
     getUserStatsByCategory();
+    getUserStatsByDate();
   }, []);
 
   return (
     <div>
       <div>
-        <BarChart width={600} height={600} eventData={data} yAxisAttribute={'amount'} xAxisAttribute={'activity'}/>
+        <BarChart eventData={barData} />
+      </div>
+      <div>
+        <CalendarChart eventData={calData} />
       </div>
     </div>
   );
