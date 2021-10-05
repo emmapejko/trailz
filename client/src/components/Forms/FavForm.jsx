@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
 import {

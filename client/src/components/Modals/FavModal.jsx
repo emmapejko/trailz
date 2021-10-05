@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';

@@ -1,3 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable import/extensions */
 import React from 'react';
@@ -76,7 +81,7 @@ const CustomInfoWindow = ({
                 <EventPrivInfo>Private Event</EventPrivInfo>
               )}
             <EventGroup>
-              <div className="row" style={{margin: 'auto'}}>
+              <div className="row" style={{ margin: 'auto' }}>
                 <div className="col-6">
                   <LabelInfo>Attendees:</LabelInfo>
                 </div>
