@@ -1,19 +1,57 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
-const ActivityLog = ({ user, events }) => (
-  <div>
-    <div>
-      {
-        user.favoriteParks.map((activity, i) => <div key={i}>{activity}</div>)
+import BarChart from '../charts/BarChart.jsx';
+
+const datas = [
+  [10, 30, 40, 20],
+  [10, 40, 30, 20, 50, 10],
+  [60, 30, 40, 20, 30],
+];
+
+let i = 0;
+
+const ActivityLog = ({ user, events }) => {
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  // const changeData = () => {
+  //   setData(datas[i++]);
+  //   if (i === datas.length) i = 0;
+  // };
+
+  const getUserStatsByCategory = () => {
+    const dataObj = {};
+
+    events.forEach(event => {
+      if (event.attendees.includes(`${user.firstName} ${user.lastName}`)) {
+        dataObj[event.activity] = dataObj[event.activity] ? dataObj[event.activity] + 1 : 1;
       }
-    </div>
+    });
+
+    setData(Object.values(dataObj));
+    setCategories(Object.keys(dataObj));
+  };
+
+  useEffect(() => {
+    getUserStatsByCategory();
+  }, []);
+
+  return (
     <div>
-      {
-        events.map((event, i) => event.activity !=='Camping' ? <div key={i}>{event.activity}</div> : null)
-      }
+      {/* <div>
+        {
+          events.map((event, i) => (event.attendees.includes(`${user.firstName} ${user.lastName}`)
+            ? <div key={i}>{event.activity}</div>
+            : null))
+        }
+      </div> */}
+      <div>
+        {/* <button type="button" onClick={changeData}>Change Data</button> */}
+        <BarChart width={600} height={600} data={data} categories={categories} />
+      </div>
+
     </div>
-  </div>
-);
+  );
+};
 
 export default ActivityLog;
