@@ -1,3 +1,9 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable import/order */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React from 'react';
 import { Nav, LinkCss, Logo, Menu, Item } from '../../styles/navBarStyles';
@@ -10,6 +16,7 @@ import Home from '../Pages/HomeScreen.jsx';
 import Map from '../Pages/Map.jsx';
 import Login from '../Pages/Login.jsx';
 import ActivityLog from '../Pages/ActivityLog.jsx';
+import Ratings from '../Pages/Ratings.jsx';
 
 const Navbar = ({
   searchResults,
@@ -88,6 +95,11 @@ const Navbar = ({
                     >
                       Events
                     </LinkCss>
+                    <Item className="nav-item">
+                  <LinkCss as={Link} to="/weather" className="nav-link">
+                    Weather Forecast
+                  </LinkCss>
+                  </Item>
                   </Item>
                   <Item className="nav-item">
                     <LinkCss
@@ -96,6 +108,15 @@ const Navbar = ({
                       className="nav-link"
                     >
                       Activity Log
+                    </LinkCss>
+                  </Item>
+                  <Item className="nav-item">
+                    <LinkCss
+                      as={Link}
+                      to="/ratings"
+                      className="nav-link"
+                    >
+                      Trail Ratings
                     </LinkCss>
                   </Item>
                 </>
@@ -147,8 +168,8 @@ const Navbar = ({
             />
             {/* different props are passed into each map component
             conditional rendering in the map component is based
-            on if that instance of map contains a particular prop 
-            for example, only the search map contains add favorite 
+            on if that instance of map contains a particular prop
+            for example, only the search map contains add favorite
             so only the search map will display an add favorite button */}
             <Map
               results={searchResults}
@@ -222,6 +243,14 @@ const Navbar = ({
               events={events}
               user={user}
               updateEvents={updateEvents}
+            />
+          </>
+        </Route>
+        <Route path="/ratings">
+          <>
+            <Ratings
+              user={user}
+              favorites={favorites}
             />
           </>
         </Route>
