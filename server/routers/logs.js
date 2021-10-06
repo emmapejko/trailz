@@ -5,7 +5,7 @@ const { Router } = express;
 const router = Router();
 
 router.get('/', );
-router.post('/:owner', logs.createLog);
+router.post('/:owner/:event', logs.createLog);
 // router.get('/validate/:eventId', );
 // router.delete('/removeEvent/:eventId', events.removeEvent);
 // router.get('/:userId', events.getUserEvents);

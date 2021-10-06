@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Log from './Log.jsx';
 import Stats from './Stats.jsx';
@@ -8,6 +9,7 @@ const ActivityLog = ({ user, events }) => {
   const [barData, setBarData] = useState([]);
   const [calData, setCalData] = useState([]);
   const [view, setView] = useState('log');
+  const [logs, setLogs] = useState([]);
 
   const getUserStatsByCategory = () => {
     const data = []; //[[activityName, #]]
@@ -48,6 +50,18 @@ const ActivityLog = ({ user, events }) => {
     setCalData(data);
   };
 
+  //create log in db for each event that the user is attendee of
+  //save logs to state and send logs to log component
+  const createLogsForUser = () => {
+    events.forEach(event => {
+      if (event.attendees.includes(`${user.firstName} ${user.lastName}`)) {
+        if (event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking')
+        axios.post(`/logs/${user._id}/${event._id}`)
+      }
+    })
+  }
+
+
   const getView = () => {
     if (view === 'log') {
       return (
@@ -61,6 +75,7 @@ const ActivityLog = ({ user, events }) => {
   }
 
   useEffect(() => {
+    createLogsForUser();
     getUserStatsByCategory();
     getUserStatsByDate();
   }, []);

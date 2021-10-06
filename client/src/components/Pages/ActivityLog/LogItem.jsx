@@ -9,7 +9,6 @@ import {
  } from '../../../styles/activityLogStyles';
 
 const LogItem = ({ user, event }) => {
-  const []
 
 
   /**

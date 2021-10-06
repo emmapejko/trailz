@@ -5,6 +5,10 @@ const logSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, //refers to user that made the log
     required: true,
   },
+  event: {
+    type: mongoose.Schema.Types.ObjectId, //refers to event that the log is on
+    required: true,
+  },
   distance: {
     type: Number,
     required: false,

@@ -4,8 +4,8 @@ const { Event, User, Log } = require('../database');
  * create log in db with owner and default values
  */
 const createLog = (req, res) => {
-  const { owner } = req.params;
-  Log.create({ owner })
+  const { owner, event } = req.params;
+  Log.create({ owner, event })
     .then(() => res.sendStatus(201))
     .catch(err => {
       console.error(err);

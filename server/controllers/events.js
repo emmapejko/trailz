@@ -17,6 +17,12 @@ const doesEventExist = wrapAsync(async (req, res) => {
   res.send(!!event);
 });
 
+const getEventById = (req, res) => {
+  const { eventId } = req.params;
+  Event.findById(eventId)
+    .then((event) => res.send(event));
+};
+
 /**
  * returns an array of events. in the database, attendees is an array
  * of object ids and owner is a object id. have to make nested requests
@@ -167,10 +173,6 @@ const unregisterForEvent = wrapAsync(async (req, res) => {
   res.send(true);
 });
 
-/**
- * create a log and add reference to event
- */
-
 module.exports = {
   getAllEvents,
   getUserEvents,
@@ -179,4 +181,5 @@ module.exports = {
   registerForEvent,
   unregisterForEvent,
   doesEventExist,
+  getEventById
 };
