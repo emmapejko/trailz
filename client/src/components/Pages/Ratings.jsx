@@ -17,7 +17,7 @@ class Ratings extends React.Component {
   render() {
   return (
     <div>
-      <ol className="list-group list-group-numbered">
+
         {
           this.props.favorites.map((fav) => (
             <RatingsItem
@@ -26,7 +26,7 @@ class Ratings extends React.Component {
             />
           ))
         }
-      </ol>
+
     </div>
     );
   };
