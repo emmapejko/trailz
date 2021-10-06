@@ -1,15 +1,13 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
-import * as d3 from 'd3';
 
-import BarChart from '../charts/BarChart.jsx';
-import CalendarChart from '../charts/CalendarChart.jsx';
-import PieChart from '../charts/PieChart.jsx';
+import Log from './Log.jsx';
+import Stats from './Stats.jsx';
 
 const ActivityLog = ({ user, events }) => {
   const [barData, setBarData] = useState([]);
   const [calData, setCalData] = useState([]);
-  //const [pieData, setPieData] = useState([]);
+  const [view, setView] = useState('log');
 
   const getUserStatsByCategory = () => {
     const data = []; //[[activityName, #]]
@@ -25,7 +23,7 @@ const ActivityLog = ({ user, events }) => {
       data.push([ activity, eventObj[activity] ]);
     });
 
-    console.log('EVENTS BY ACTIVITY TYPE: ', data);
+    //console.log('EVENTS BY ACTIVITY TYPE: ', data);
     setBarData(data);
   };
 
@@ -46,8 +44,20 @@ const ActivityLog = ({ user, events }) => {
       data.push([ new Date(year, month, day), eventObj[date] ]);
     });
 
-    console.log('EVENTS BY DATE: ', data);
+    //console.log('EVENTS BY DATE: ', data);
     setCalData(data);
+  };
+
+  const getView = () => {
+    if (view === 'log') {
+      return (
+        <Log user={user} events={events} />
+      )
+    } else if (view === 'stats') {
+      return (
+        <Stats barData={barData} calData={calData} />
+      )
+    }
   }
 
   useEffect(() => {
@@ -57,15 +67,11 @@ const ActivityLog = ({ user, events }) => {
 
   return (
     <div>
-      <div>
-        <BarChart eventData={barData} />
-      </div>
-      <div>
-        <CalendarChart eventData={calData} />
-      </div>
-      <div>
-        <PieChart eventData={barData} />
-      </div>
+      <h3 align='center'>Activity Log</h3>
+      <nav>
+      <button onClick={() => view === 'log' ? setView('stats') : setView('log')}>{view === 'log' ? 'View Stats' : 'View Log'}</button>
+      </nav>
+      {getView()}
     </div>
   );
 };

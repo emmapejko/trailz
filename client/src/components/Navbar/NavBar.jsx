@@ -15,7 +15,7 @@ import Search from '../Pages/Search.jsx';
 import Home from '../Pages/HomeScreen.jsx';
 import Map from '../Pages/Map.jsx';
 import Login from '../Pages/Login.jsx';
-import ActivityLog from '../Pages/ActivityLog.jsx';
+import ActivityLog from '../Pages/ActivityLog/ActivityLog.jsx';
 import Ratings from '../Pages/Ratings.jsx';
 
 const Navbar = ({
@@ -107,7 +107,7 @@ const Navbar = ({
                       to="/activity"
                       className="nav-link"
                     >
-                      Activity Log
+                      Log
                     </LinkCss>
                   </Item>
                   <Item className="nav-item">
