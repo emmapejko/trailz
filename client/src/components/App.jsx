@@ -1,10 +1,8 @@
 /* eslint-disable max-len */
-/* eslint-disable no-console */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-shadow */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 /* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
@@ -229,10 +227,6 @@ const App = () => {
       (position) => (currPosition = position),
     );
     if (currPosition) {
-      window.navigator.geolocation.getCurrentPosition((position) => setPosition({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      }));
     } else {
       setPosition({
         lat: 29.976999,

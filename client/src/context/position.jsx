@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { createContext, useContext } from 'react';
 
 const PositionContext = createContext();

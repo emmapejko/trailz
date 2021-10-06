@@ -1,4 +1,10 @@
+
 /* eslint-disable */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import GoogleButton from 'react-google-button';
 import axios from 'axios';
