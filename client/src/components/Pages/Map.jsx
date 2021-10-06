@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-boolean-value */
+/* eslint-disable */
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { v4 as getKey } from 'uuid';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';

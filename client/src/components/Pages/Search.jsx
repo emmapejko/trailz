@@ -1,7 +1,12 @@
+
+/* eslint-disable react/prop-types */
+/* eslint-disable multiline-ternary */
+/* eslint-disable */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable multiline-ternary */
 /* eslint-disable react/prop-types */
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import SearchBar from '../../styles/search';
