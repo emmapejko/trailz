@@ -106,6 +106,7 @@ const searchParks = wrapAsync(async (req, res) => {
   const { data: results } = await axios.get(
     `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&key=${PLACES_API_KEY}&keyword=${keyword}`
   );
+  console.log(results)
   const mappedResults = results.results.map((result) => ({
     parkId: result.place_id,
     name: result.name,
@@ -118,6 +119,7 @@ const searchParks = wrapAsync(async (req, res) => {
     // imageUrl: result.photos[0].photo_reference || null,
     // anchorTag: result.photos[0].html_attributions || null,
   }));
+
   const locations = mappedResults.reduce(
     (center, result) => ({
       minLat:
