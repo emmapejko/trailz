@@ -167,6 +167,10 @@ const unregisterForEvent = wrapAsync(async (req, res) => {
   res.send(true);
 });
 
+/**
+ * create a log and add reference to event
+ */
+
 module.exports = {
   getAllEvents,
   getUserEvents,

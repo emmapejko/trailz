@@ -1,25 +1,8 @@
 const mongoose = require('mongoose');
 
 const logSchema = new mongoose.Schema({
-  event: {
-    type: mongoose.Schema.Types.ObjectId, //refers to the event
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  activity: {
-    type: String,
-    required: true,
-    /**
-     * enumerations are used with the possibilities is discrete
-     * any potential values must be included in array
-     */
-    enum: ['Hiking', 'Biking', 'Running'],
-  },
   owner: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId, //refers to user that made the log
     required: true,
   },
   distance: {
