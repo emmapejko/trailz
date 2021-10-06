@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Park, User } = require('../database');
 const { wrapAsync } = require('../helpers');
-const GOOGLE_MAPS_API_KEY = require('../google-maps/API');
+const { PLACES_API_KEY, GOOGLE_MAPS_API_KEY } = require('../google-maps/API');
 
 /**
  * returns an array of favorite parks based on a user id. maps
@@ -73,7 +73,7 @@ const removeFavoritePark = wrapAsync(async (req, res) => {
  */
 const defaultSearch = wrapAsync(async (req, res) => {
   const { data: results } = await axios.get(
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${GOOGLE_MAPS_API_KEY}&location=29.977000,-90.101570&radius=160934&keyword=trails&type=park`,
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${PLACES_API_KEY}&location=29.977000,-90.101570&radius=160934`
   );
   res.send(
     results.results.map((result) => ({
@@ -104,7 +104,7 @@ const defaultSearch = wrapAsync(async (req, res) => {
 const searchParks = wrapAsync(async (req, res) => {
   const { lat, lng, keyword } = req.params;
   const { data: results } = await axios.get(
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&type=park&key=${GOOGLE_MAPS_API_KEY}&keyword=${keyword}`,
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&key=${PLACES_API_KEY}&keyword=${keyword}`
   );
   const mappedResults = results.results.map((result) => ({
     parkId: result.place_id,
