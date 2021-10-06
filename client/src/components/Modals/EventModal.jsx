@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import {
