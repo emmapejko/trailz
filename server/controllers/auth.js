@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const { wrapAsync } = require('../helpers');
 const { User } = require('../database');
 

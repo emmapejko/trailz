@@ -1,4 +1,7 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable import/extensions */

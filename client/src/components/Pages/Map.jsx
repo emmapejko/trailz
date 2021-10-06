@@ -1,3 +1,7 @@
+/* eslint-disable multiline-ternary */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/jsx-boolean-value */
@@ -37,6 +41,7 @@ const Map = ({
   position,
   register,
   unregister,
+  rateTrail,
   addEvent,
   removeEvent,
   events,
@@ -186,15 +191,15 @@ const Map = ({
         zoom={zoom}
         options={options}
         onClick={(event) => setUserPins(() => [
-            {
-              name: 'Dropped Pin',
-              location: {
-                lat: event.latLng.lat(),
-                lng: event.latLng.lng(),
-              },
-              parkId: getKey(),
+          {
+            name: 'Dropped Pin',
+            location: {
+              lat: event.latLng.lat(),
+              lng: event.latLng.lng(),
             },
-          ])}
+            parkId: getKey(),
+          },
+        ])}
         onLoad={onMapLoad}
       >
         {/* map over results (array of parks or events) and

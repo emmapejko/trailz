@@ -18,7 +18,7 @@ const Search = ({
     axios
       .get(`/parks/searchResults/${lat}/${lng}/${search}`)
       .then(({ data: results }) => {
-        // console.log(results);
+        //console.log('SEARCH RESULTS', results);
         if (results.mappedResults.length) {
           updateSearchResults(results.mappedResults);
         } else {

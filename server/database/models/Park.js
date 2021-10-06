@@ -31,6 +31,9 @@ const parkSchema = mongoose.Schema({
   anchorTag: {
     type: String,
   },
+  rating: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model('Park', parkSchema);
