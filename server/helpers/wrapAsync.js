@@ -1,4 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
 /**
  * wrap async can be used to wrap route handlers that
  * require the await keyword. if you don't want to use
