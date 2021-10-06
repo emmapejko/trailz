@@ -14,6 +14,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
+import RatingsItem from '../Pages/RatingsItem.jsx'
 // import axios from 'axios';
 
 class Ratings extends React.Component {
@@ -26,20 +27,24 @@ class Ratings extends React.Component {
 
 
     this.state = {
-      values: [
-        { name: 'select', id: 0 },
-        { name: '1 Star', id: 1 },
-        { name: '2 Star', id: 2 },
-        { name: '3 Star', id: 3 },
-        { name: '4 Star', id: 4 },
-        { name: '5 Star', id: 5 }
-      ]
+      selectValue: 'Rate!',
+      // values: [
+      //   { name: 'select', id: 0 },
+      //   { name: '1 Star', id: 1 },
+      //   { name: '2 Stars', id: 2 },
+      //   { name: '3 Stars', id: 3 },
+      //   { name: '4 Stars', id: 4 },
+      //   { name: '5 Stars', id: 5 }
+      // ]
     }
     //bind area
+    //this.handleClick = this.handleClick.bind(this);
     //this.handleChange = this.handleChange.bind(this);
   }
 
-  // const getRating = (star) => {
+
+
+  // getRating(star) {
   //   switch (star) {
   //   case '1 Star':
   //     return '⭐';
@@ -69,44 +74,28 @@ class Ratings extends React.Component {
   // console.log(trail.toString(''), this.props.favorites, key)
   // }
 
-
+  // handleClick(e, trail) {
+  //   const { favorites } = this.props;
+  //   console.log(trail, favorites[0].name, 'weehaw')
+  //     this.setState({ selectValue: e.target.value })
+  // }
 
   render() {
-    let optionTemplate = this.state.values.map((v, i) => (
-      <option key={i} value={v.id}>{v.name}</option>
-    ));
+    // let optionTemplate = this.state.values.map((v, i) => (
+    //   <option key={i} value={v.id}>{v.name}</option>
+    // ));
+    const { favorites } = this.props;
   return (
     <div>
       <ol className="list-group list-group-numbered">
         {
-          this.props.favorites.map((fav, i) => (
+          this.props.favorites.map((fav) => (
 
-            <li className="list-group-item d-flex justify-content-between align-items-start" key={i}>
-              <div className="ms-2 me-auto">
-                <div className="fw-bold">{fav.name}</div>
-                {fav.location.lat}
-                <br />
-                {fav.location.lng}
-                <br />
-                <label>
-                Rate Trail:
-                <select value={this.state.value} onChange={this.handleChange}>
-                  {optionTemplate}
-                </select>
-                </label>
-                  <div className="form-group form-check">
-                    <input type="checkbox"
-                    className="form-check-input"
-                    id="exampleCheck1"
-                    />
-                    <label
-                    className="form-check-label"
-                    htmlFor="exampleCheck1">Visited!</label>
-                  </div>
-              </div>
-              <span className="badge bg-primary rounded-pill">Rating: 0</span>
-            </li>
-
+            <RatingsItem
+            key={fav._id}
+            fav={fav}
+           // handleChange={(e) => this.handleChange(e)}
+            />
           ))
         }
       </ol>
