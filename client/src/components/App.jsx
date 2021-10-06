@@ -1,14 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
-/* eslint-disable */
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from './Navbar/NavBar.jsx';
-
-
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]); // array of parks
