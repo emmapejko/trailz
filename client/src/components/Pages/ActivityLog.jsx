@@ -4,12 +4,12 @@ import * as d3 from 'd3';
 
 import BarChart from '../charts/BarChart.jsx';
 import CalendarChart from '../charts/CalendarChart.jsx';
-import MapChart from '../charts/MapChart.jsx';
+import PieChart from '../charts/PieChart.jsx';
 
 const ActivityLog = ({ user, events }) => {
   const [barData, setBarData] = useState([]);
   const [calData, setCalData] = useState([]);
-  const [mapData, setMapData] = useState([]);
+  //const [pieData, setPieData] = useState([]);
 
   const getUserStatsByCategory = () => {
     const data = []; //[[activityName, #]]
@@ -64,7 +64,7 @@ const ActivityLog = ({ user, events }) => {
         <CalendarChart eventData={calData} />
       </div>
       <div>
-        <MapChart eventData={mapData} />
+        <PieChart eventData={barData} />
       </div>
     </div>
   );
