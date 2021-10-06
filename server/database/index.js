@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const { User, Park, Event } = require('./models');
-
-// const name = 'trailzDb';
-// const url = `mongodb://localhost:27017/${name}`;
+const name = 'trailzDb';
+const url = `mongodb://localhost/${name}`;
 const uri = `mongodb+srv://ep:${process.env.DATABASE_PASSWORD}@cluster0.2ezti.mongodb.net/trailzDb?retryWrites=true&w=majority`;
 
 const database = mongoose

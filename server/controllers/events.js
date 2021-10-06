@@ -1,7 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-underscore-dangle */
 const { Event, User } = require('../database');
 const { wrapAsync } = require('../helpers');
 

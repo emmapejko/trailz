@@ -1,9 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-return-assign */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-console */
-/* eslint-disable no-shadow */
-/* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 
@@ -38,7 +33,7 @@ const App = () => {
     await axios.delete(`/events/${user._id}/${eventId}`);
     const foundEvent = events.find((event) => event._id === eventId);
     foundEvent.attendees = foundEvent.attendees.filter(
-      (attendee) => attendee !== `${user.firstName} ${user.lastName}`
+      (attendee) => attendee !== `${user.firstName} ${user.lastName}`,
     );
     setEvents(
       events.map((event) => {
@@ -46,7 +41,7 @@ const App = () => {
           return foundEvent;
         }
         return event;
-      })
+      }),
     );
   };
   /**
@@ -64,7 +59,7 @@ const App = () => {
     }
     await axios.post(`/events/${user._id}/${eventId}`);
     const foundEvent = events.find(
-      (currentEvent) => currentEvent._id === eventId
+      (currentEvent) => currentEvent._id === eventId,
     );
     foundEvent.attendees = [
       ...foundEvent.attendees,
@@ -76,7 +71,7 @@ const App = () => {
           return foundEvent;
         }
         return event;
-      })
+      }),
     );
   };
   /**
@@ -132,8 +127,8 @@ const App = () => {
       .then(() => {
         setFavorites(
           favorites.filter(
-            (currentPark) => park._id.toString() !== currentPark._id
-          )
+            (currentPark) => park._id.toString() !== currentPark._id,
+          ),
         );
       })
       .catch((err) => console.log(err));
@@ -164,7 +159,7 @@ const App = () => {
   // returns an array of park objects
   const fetchFavorites = async (user) => {
     const { data: favoriteParks } = await axios.get(
-      `/parks/favorites/${user._id}`
+      `/parks/favorites/${user._id}`,
     );
     return favoriteParks;
   };
@@ -201,7 +196,7 @@ const App = () => {
     console.log(data);
     const now = new Date();
     return data.filter(
-      (event) => new Date(event.time) >= now.setTime(now.getDate() - 1)
+      (event) => new Date(event.time) >= now.setTime(now.getDate() - 1),
     );
   };
 
@@ -226,16 +221,9 @@ const App = () => {
   useEffect(() => {
     let currPosition;
     window.navigator.geolocation.getCurrentPosition(
-      (position) => (currPosition = position)
+      (position) => (currPosition = position),
     );
     if (currPosition) {
-      window.navigator.geolocation.getCurrentPosition((position) =>
-        setPosition({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        })
-      // eslint-disable-next-line function-paren-newline
-      );
     } else {
       setPosition({
         lat: 29.976999,

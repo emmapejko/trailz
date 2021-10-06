@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-undef */
-/* eslint-disable no-param-reassign */
-/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable import/extensions */
@@ -82,7 +77,6 @@ const CustomInfoWindow = ({
                 <EventPrivInfo>Private Event</EventPrivInfo>
               )}
             <EventGroup>
-              // eslint-disable-next-line object-curly-spacing
               <div className="row" style={{ margin: 'auto' }}>
                 <div className="col-6">
                   <LabelInfo>Attendees:</LabelInfo>

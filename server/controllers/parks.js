@@ -73,9 +73,7 @@ const removeFavoritePark = wrapAsync(async (req, res) => {
  * trails.
  */
 const defaultSearch = wrapAsync(async (req, res) => {
-  const { data: results } = await axios.get(
-    `https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=places"`,
-  );
+  const { data: results } = await axios.get(`https://maps.googleapis.com/maps/api/js?key=${PLACES_API_KEY}&libraries=places"`);
   console.log(results);
   res.send(
     results.results.map((result) => ({
@@ -106,8 +104,7 @@ const defaultSearch = wrapAsync(async (req, res) => {
 const searchParks = wrapAsync(async (req, res) => {
   const { lat, lng, keyword } = req.params;
   const { data: results } = await axios.get( 
-    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&key=${PLACES_API_KEY}&keyword=${keyword}`,
-  );
+    `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=160934&key=${PLACES_API_KEY}&keyword=${keyword}`);
   const mappedResults = results.results.map((result) => ({
     parkId: result.place_id,
     name: result.name,
