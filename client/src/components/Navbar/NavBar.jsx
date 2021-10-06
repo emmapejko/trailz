@@ -16,6 +16,7 @@ import Home from '../Pages/HomeScreen.jsx';
 import Map from '../Pages/Map.jsx';
 import Login from '../Pages/Login.jsx';
 import ActivityLog from '../Pages/ActivityLog.jsx';
+import Weather from '../Pages/Weather.jsx';
 import Ratings from '../Pages/Ratings.jsx';
 
 const Navbar = ({
@@ -95,11 +96,11 @@ const Navbar = ({
                     >
                       Events
                     </LinkCss>
-                    <Item className="nav-item">
-                  <LinkCss as={Link} to="/weather" className="nav-link">
-                    Weather Forecast
-                  </LinkCss>
                   </Item>
+                  <Item className="nav-item">
+                  <LinkCss as={Link} to="/weather" className="nav-link">
+                    Weather
+                  </LinkCss>
                   </Item>
                   <Item className="nav-item">
                     <LinkCss
@@ -243,6 +244,13 @@ const Navbar = ({
               events={events}
               user={user}
               updateEvents={updateEvents}
+            />
+          </>
+        </Route>
+        <Route path="/weather">
+          <>
+            <Weather
+              user={user}
             />
           </>
         </Route>
