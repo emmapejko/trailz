@@ -95,6 +95,11 @@ const Navbar = ({
                     >
                       Events
                     </LinkCss>
+                    <Item className="nav-item">
+                  <LinkCss as={Link} to="/weather" className="nav-link">
+                    Weather Forecast
+                  </LinkCss>
+                  </Item>
                   </Item>
                   <Item className="nav-item">
                     <LinkCss
