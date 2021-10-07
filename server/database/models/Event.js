@@ -50,12 +50,6 @@ const eventSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  // /**
-  //  * array of object ids referring to logs
-  //  */
-  // logs: [
-  //   { type: mongoose.Schema.Types.ObjectId, required: true, default: [] },
-  // ]
 });
 
 module.exports = mongoose.model('Event', eventSchema);
