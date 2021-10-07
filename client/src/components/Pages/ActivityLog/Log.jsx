@@ -8,9 +8,25 @@ import {
   ActivityLogItemTime,
  } from '../../../styles/activityLogStyles';
 
-const Log = ({ user, events }) => {
+const Log = ({ user, events, logs }) => {
 
   const logEvents = events.filter(event => event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking');
+
+  const organizeLogs = () => {
+    const organizedLogs = [];
+    logEvents.forEach((event, i) => {
+      logs.forEach(log => {
+        if (log.event === event._id) {
+          organizedLogs[i] = log
+        }
+      })
+    })
+    return organizedLogs;
+  };
+
+  //const logsInOrder = organizeLogs();
+  //console.log('EVENTS: ', logEvents);
+  //console.log('LOGS IN ORDER: ',logsInOrder);
 
   return (
     <div>
@@ -22,7 +38,9 @@ const Log = ({ user, events }) => {
     </ActivityLogItem>
       <div>
         {
-          logEvents.map((event, i) => <LogItem key={i} event={event} user={user}/>)
+          logEvents.length === logs.length ?
+          logEvents.map((event, i) => <LogItem key={i} event={event} user={user} log={organizeLogs()[i]}/>)
+          : null
         }
       </div>
     </div>

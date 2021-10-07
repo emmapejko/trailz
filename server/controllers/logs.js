@@ -5,14 +5,48 @@ const { Event, User, Log } = require('../database');
  */
 const createLog = (req, res) => {
   const { owner, event } = req.params;
-  Log.create({ owner, event })
-    .then(() => res.sendStatus(201))
+  Log.findOne({ owner, event })
+    .then(found => {
+      if (!found) {
+        Log.create({owner, event })
+          .then((created) => {
+            //console.log('created log sending it back');
+            res.send(created)
+          })
+          .catch(err => {
+            console.error(err);
+            res.sendStatus(404);
+          });
+      } else {
+        //console.log('found log sending it back');
+        res.send(found);
+      }
+    })
+};
+
+/**
+ * get all logs assoc w user
+ */
+const getUserLogs = (req, res) => {
+  const { owner } = req.params;
+  const logs = [];
+  Log.find()
+    .then(logRes => {
+      logRes.forEach(log => {
+        if (log.owner.toString() === owner) {
+          logs.push(log);
+        }
+      })
+    })
+    .then(() => res.send(logs))
     .catch(err => {
       console.error(err);
       res.sendStatus(404);
     })
-}
+
+};
 
 module.exports = {
   createLog,
+  getUserLogs
 }

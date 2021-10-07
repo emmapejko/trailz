@@ -4,7 +4,7 @@ const { logs } = require('../controllers');
 const { Router } = express;
 const router = Router();
 
-router.get('/', );
+router.get('/:owner', logs.getUserLogs);
 router.post('/:owner/:event', logs.createLog);
 // router.get('/validate/:eventId', );
 // router.delete('/removeEvent/:eventId', events.removeEvent);

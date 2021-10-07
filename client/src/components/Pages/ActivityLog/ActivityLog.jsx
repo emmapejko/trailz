@@ -53,19 +53,34 @@ const ActivityLog = ({ user, events }) => {
   //create log in db for each event that the user is attendee of
   //save logs to state and send logs to log component
   const createLogsForUser = () => {
+    setLogs([]);
     events.forEach(event => {
       if (event.attendees.includes(`${user.firstName} ${user.lastName}`)) {
         if (event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking')
         axios.post(`/logs/${user._id}/${event._id}`)
+          .then(({ data }) => {
+            setLogs(prevLogs => [...prevLogs, data]);
+          })
       }
     })
   }
 
+  //get all logs associated with user
+  const getUserLogs = () => {
+    axios.get(`/logs/${user._id}`)
+      .then(({ data }) => {
+        console.log('LOGS FOR USER: ', data);
+        setLogs(data);
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
 
   const getView = () => {
     if (view === 'log') {
       return (
-        <Log user={user} events={events} />
+        <Log user={user} events={events} logs={logs}/>
       )
     } else if (view === 'stats') {
       return (
