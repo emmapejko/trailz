@@ -16,6 +16,7 @@ const CalendarChart = ({ eventData }) => (
   options={{
     title: 'Events Attended by Date',
   }}
+  style={{marginLeft: '8%', marginRight: '8%'}}
 />
 );
 

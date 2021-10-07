@@ -5,8 +5,8 @@ import { Chart } from 'react-google-charts';
 
 const PieChart = ({ eventData }) => (
   <Chart
-    width={'500px'}
-    height={'300px'}
+    width={'600px'}
+    height={'400px'}
     chartType="PieChart"
     loader={<div>Loading Chart</div>}
     data={[
@@ -17,7 +17,7 @@ const PieChart = ({ eventData }) => (
       ...eventData
     ]}
     options={{
-      title: 'Events by Activity Type',
+      title: 'Events Attended by Activity Type',
     }}
   />
 );

@@ -4,12 +4,15 @@ import axios from 'axios';
 
 import Log from './Log.jsx';
 import Stats from './Stats.jsx';
+import { Breadcrumb } from '../../../styles/activityLogStyles.js';
 
 const ActivityLog = ({ user, events }) => {
   const [barData, setBarData] = useState([]);
   const [calData, setCalData] = useState([]);
   const [view, setView] = useState('log');
   const [logs, setLogs] = useState([]);
+  const [logBreadcrumb, setLogBreadcrumb] = useState('underline');
+  const [dashBreadcrumb, setDashBreadcrumb] = useState('none');
 
   const getUserStatsByCategory = () => {
     const data = []; //[[activityName, #]]
@@ -97,9 +100,32 @@ const ActivityLog = ({ user, events }) => {
 
   return (
     <div>
-      <h3 align='center'>Activity Log</h3>
-      <nav>
-      <button onClick={() => view === 'log' ? setView('stats') : setView('log')}>{view === 'log' ? 'View Stats' : 'View Log'}</button>
+      <nav style={{"--bs-breadcrumb-divider":''}} aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <Breadcrumb
+            className="breadcrumb-item active"
+            style={{textDecoration: logBreadcrumb}}
+            onClick={() => {
+              createLogsForUser();
+              setView('log');
+              setDashBreadcrumb('none');
+              setLogBreadcrumb('underline');
+            }}
+          >
+            Activity Log
+          </Breadcrumb>
+          <Breadcrumb
+            className="breadcrumb-item active"
+            style={{textDecoration: dashBreadcrumb}}
+            onClick={() => {
+              setView('stats');
+              setLogBreadcrumb('none');
+              setDashBreadcrumb('underline');
+            }}
+          >
+            Dashboard
+          </Breadcrumb>
+        </ol>
       </nav>
       {getView()}
     </div>

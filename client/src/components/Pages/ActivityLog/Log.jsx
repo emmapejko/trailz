@@ -32,10 +32,10 @@ const Log = ({ user, events, logs }) => {
     <div>
       <ActivityLogItem>
       <ActivityLogItemName>Activity Type</ActivityLogItemName>
+      <ActivityLogItemDate>Date</ActivityLogItemDate>
       <ActivityLogItemTime>Distance (miles)</ActivityLogItemTime>
       <ActivityLogItemTime>Time (HH:MM:SS)</ActivityLogItemTime>
-      <ActivityLogItemTime>Submit</ActivityLogItemTime>
-      <ActivityLogItemDate>Date</ActivityLogItemDate>
+      <ActivityLogItemTime></ActivityLogItemTime>
     </ActivityLogItem>
       <div>
         {
