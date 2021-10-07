@@ -16,12 +16,24 @@ const LogItem = ({ user, event, log }) => {
 
   console.log('EVENT: ', event._id, 'LOG: ', log.event);
 
+  const submitDistAndTime = () => {
+    axios.put(`/logs/addlog/${log._id}`, {
+      data: {
+        distance,
+        hours,
+        minutes,
+        seconds
+      }
+    })
+  }
+
   return (
     <ActivityLogItem>
       <ActivityLogItemName>{event.activity}</ActivityLogItemName>
       <ActivityLogItemTime>
         <input
-          size="15"
+          size="5"
+          maxLength="5"
           style={{paddingRight:'45px', textAlign:'right'}}
           value={distance}
           onChange={(e) => setDistance(e.target.value)}
@@ -51,6 +63,7 @@ const LogItem = ({ user, event, log }) => {
           onChange={(e) => setSeconds(e.target.value)}
         />
       </ActivityLogItemTime>
+      <ActivityLogItemTime><button onClick={submitDistAndTime}>Submit Dist & Time</button></ActivityLogItemTime>
       <ActivityLogItemDate>{event.time.slice(0, 10)}</ActivityLogItemDate>
     </ActivityLogItem>
   )

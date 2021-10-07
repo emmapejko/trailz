@@ -6,11 +6,6 @@ const router = Router();
 
 router.get('/:owner', logs.getUserLogs);
 router.post('/:owner/:event', logs.createLog);
-// router.get('/validate/:eventId', );
-// router.delete('/removeEvent/:eventId', events.removeEvent);
-// router.get('/:userId', events.getUserEvents);
-// router.post('/:userId', events.addNewEvent);
-// router.post('/:userId/:eventId', events.registerForEvent);
-// router.delete('/:userId/:eventId', events.unregisterForEvent);
+router.put('/addLog/:log', logs.addDistAndTime);
 
 module.exports = router;
