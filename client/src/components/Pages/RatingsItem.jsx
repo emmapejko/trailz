@@ -1,5 +1,8 @@
 import React from 'react';
 
+import {
+  RatingsTrail,
+ } from '../../styles/ratingsStyles';
 
 class RatingsItem extends React.Component {
   constructor(props) {
@@ -25,11 +28,16 @@ class RatingsItem extends React.Component {
 
   render() {
     const { favorites } = this.props;
+    const liStyle = { backgroundColor: '#778899' }
   return (
-    <div>
-      <ol className="list-group ">
 
-            <li key={this.props.fav._id} className="list-group-item d-flex justify-content-between align-items-start" >
+    <div>
+      <RatingsTrail>
+      <ol  className="list-group testing">
+
+            <li key={this.props.fav._id}
+            style={ liStyle }
+            className="list-group-item d-flex justify-content-between align-items-start" >
               <div className="ms-2 me-auto">
                 <div className="fw-bold">{this.props.fav.name}</div>
                 {this.props.fav.location.lat}
@@ -58,12 +66,12 @@ class RatingsItem extends React.Component {
                     className="form-check-label"
                     htmlFor="exampleCheck1">Visited!</label>
                   </div>
-              </div>
+                </div>
           <span key={this.props.fav._id}  value={this.props.fav.name} onChange={() => this.handleChange(this.props.fav.name)} className="badge bg-primary rounded-pill">{ this.state.selectValue }</span>
             </li>
       </ol>
+      </RatingsTrail>
     </div>
-
   );
       };
 };
