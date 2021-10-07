@@ -9,6 +9,7 @@ const {
   auth: authRouter,
   parks: parksRouter,
   events: eventsRouter,
+  logs: logRouter
 } = require('./routers');
 const { handleError } = require('./helpers');
 
@@ -35,6 +36,7 @@ require('./helpers/auth'); // run auth functions, don't need to capture imports
 app.use('/auth', authRouter);
 app.use('/parks', parksRouter);
 app.use('/events', eventsRouter);
+app.use('/logs', logRouter);
 
 // app.use(handleError);
 

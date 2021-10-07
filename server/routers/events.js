@@ -11,5 +11,6 @@ router.get('/:userId', events.getUserEvents);
 router.post('/:userId', events.addNewEvent);
 router.post('/:userId/:eventId', events.registerForEvent);
 router.delete('/:userId/:eventId', events.unregisterForEvent);
+router.get('/findevent/:eventId', events.getEventById);
 
 module.exports = router;

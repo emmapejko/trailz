@@ -4,4 +4,5 @@ module.exports = {
   parks: require('./parks'),
   events: require('./events'),
   users: require('./users'),
+  logs: require('./logs')
 };
