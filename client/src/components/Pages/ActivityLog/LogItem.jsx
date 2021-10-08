@@ -14,6 +14,7 @@ const LogItem = ({ user, event, log }) => {
   const [minutes, setMinutes] = useState(log.minutes);
   const [seconds, setSeconds] = useState(log.seconds);
   const [color, setColor] = useState('black');
+
   //console.log('EVENT: ', event._id, 'LOG: ', log.event);
 
   const submitDistAndTime = () => {

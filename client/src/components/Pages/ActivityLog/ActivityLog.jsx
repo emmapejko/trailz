@@ -28,7 +28,7 @@ const ActivityLog = ({ user, events }) => {
       data.push([ activity, eventObj[activity] ]);
     });
 
-    //console.log('EVENTS BY ACTIVITY TYPE: ', data);
+    console.log('EVENTS BY ACTIVITY TYPE: ', data);
     setBarData(data);
   };
 

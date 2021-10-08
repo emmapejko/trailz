@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import BarChart from '../../charts/BarChart.jsx';
 import CalendarChart from '../../charts/CalendarChart.jsx';
 import PieChart from '../../charts/PieChart.jsx';
+import LineChart from '../../charts/LineChart.jsx';
 
-const Stats = ({ barData, calData }) => {
+const Stats = ({ barData, calData, logs }) => {
   return (
     <div>
       <div style={{display: 'flex', marginBottom: '50px'}}>
@@ -17,6 +18,9 @@ const Stats = ({ barData, calData }) => {
       </div>
     <div>
       <CalendarChart eventData={calData} />
+    </div>
+    <div style={{marginLeft: '20%', marginBottom: '200px'}}>
+      <LineChart eventData={barData} />
     </div>
   </div>
   )

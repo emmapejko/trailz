@@ -23,6 +23,7 @@ const BarChart = ({ eventData }) => (
       height: 400,
       bar: { groupWidth: '95%' },
       legend: { position: 'none' },
+      colors: [ 'forestGreen' ],
       hAxis : {
         title: 'Number of Events',
         minValue: 0,
