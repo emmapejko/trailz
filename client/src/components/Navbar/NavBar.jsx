@@ -18,6 +18,7 @@ import Login from '../Pages/Login.jsx';
 import ActivityLog from '../Pages/ActivityLog/ActivityLog.jsx';
 import Weather from '../Pages/Weather.jsx';
 import Ratings from '../Pages/Ratings.jsx';
+import Explore from '../Pages/Explore.jsx';
 
 const Navbar = ({
   searchResults,
@@ -118,6 +119,15 @@ const Navbar = ({
                       className="nav-link"
                     >
                       Trail Ratings
+                    </LinkCss>
+                  </Item>
+                  <Item className="nav-item">
+                    <LinkCss
+                      as={Link}
+                      to="/explore"
+                      className="nav-link"
+                    >
+                      Explore
                     </LinkCss>
                   </Item>
                 </>
@@ -235,15 +245,8 @@ const Navbar = ({
         <Route path="/activity">
           <>
             <ActivityLog
-              results={events}
-              position={position}
-              register={register}
-              unregister={unregister}
-              addEvent={addEvent}
-              removeEvent={removeEvent}
               events={events}
               user={user}
-              updateEvents={updateEvents}
             />
           </>
         </Route>
@@ -259,6 +262,14 @@ const Navbar = ({
             <Ratings
               user={user}
               favorites={favorites}
+            />
+          </>
+        </Route>
+        <Route path="/explore">
+          <>
+            <Explore
+              events={events}
+              user={user}
             />
           </>
         </Route>

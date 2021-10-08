@@ -9,7 +9,8 @@ const {
   auth: authRouter,
   parks: parksRouter,
   events: eventsRouter,
-  logs: logRouter
+  logs: logRouter,
+  explore: exploreRouter,
 } = require('./routers');
 const { handleError } = require('./helpers');
 
@@ -37,6 +38,7 @@ app.use('/auth', authRouter);
 app.use('/parks', parksRouter);
 app.use('/events', eventsRouter);
 app.use('/logs', logRouter);
+app.use('/explore', exploreRouter);
 
 // app.use(handleError);
 
