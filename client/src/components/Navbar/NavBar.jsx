@@ -118,7 +118,7 @@ const Navbar = ({
                       to="/ratings"
                       className="nav-link"
                     >
-                      Trail Ratings
+                      Ratings
                     </LinkCss>
                   </Item>
                   <Item className="nav-item">
