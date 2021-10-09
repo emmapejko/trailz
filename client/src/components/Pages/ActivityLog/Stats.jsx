@@ -19,9 +19,9 @@ const Stats = ({ barData, calData, logs }) => {
     <div>
       <CalendarChart eventData={calData} />
     </div>
-    <div style={{marginLeft: '20%', marginBottom: '200px'}}>
+    {/* <div style={{marginLeft: '20%', marginBottom: '200px'}}>
       <LineChart eventData={barData} />
-    </div>
+    </div> */}
   </div>
   )
 }

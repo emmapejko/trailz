@@ -270,6 +270,8 @@ const Navbar = ({
             <Explore
               events={events}
               user={user}
+              addEvent={addEvent}
+              toggleSearch={toggleSearch}
             />
           </>
         </Route>

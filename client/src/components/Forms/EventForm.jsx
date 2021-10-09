@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-alert */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import {
   EventFormGroup,
@@ -14,7 +14,7 @@ import {
   EventFormButton,
 } from '../../styles/eventFormStyles';
 
-const EventForm = ({ location, addEvent, closeModal }) => {
+const EventForm = ({ location, addEvent, closeModal, titleFromNPS }) => {
   // Input fields
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(moment(new Date()).format('YYYY-MM-DD'));
@@ -49,6 +49,12 @@ const EventForm = ({ location, addEvent, closeModal }) => {
     }
   };
 
+  useEffect(() => {
+    if (titleFromNPS) {
+      setTitle(titleFromNPS);
+    }
+  }, []);
+
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -59,6 +65,7 @@ const EventForm = ({ location, addEvent, closeModal }) => {
             type="text"
             placeholder="Name your event"
             name="eventName"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />

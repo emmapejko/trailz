@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { ExploreHeader } from '../../styles/activityLogStyles';
+import EventForm from '../Forms/EventForm.jsx';
+import EventModal from '../Modals/EventModal.jsx';
 
 const parks = {
   'Arches National Park': 'ARCH',
@@ -16,9 +18,11 @@ const parks = {
   'Yosemite National Park': 'YOSE',
 };
 
-const Explore = () => {
+const Explore = ({ user, addEvent, toggleSearch }) => {
   const [selected, setSelected] = useState('');
   const [activities, setActivities] = useState([]);
+  const [plan, setPlan] = useState({});
+  const [location, setLocation] = useState({});
 
   const searchPark = () => {
     axios.get( `/explore/${parks[selected]}`)
@@ -28,6 +32,18 @@ const Explore = () => {
       })
       .catch(err => console.error(err));
   };
+
+  const addParkEvent = (activity) => {
+    console.log(activity);
+    setLocation({
+      name: selected,
+      location: {
+        lat: activity.latitude ? parseFloat(activity.latitude) : 39.5501,
+        lng: activity.longitude ? parseFloat(activity.longitude) : -105.7821,
+      }
+    })
+    setPlan(activity);
+  }
 
   return (
     <div>
@@ -49,7 +65,25 @@ const Explore = () => {
     </div>
     <div>
       {
-        !activities.length ? null :
+        plan.title ?
+        <div style={{marginLeft: '8%'}}>
+          <EventForm
+            location={location}
+            addEvent={addEvent}
+            closeModal={() => setPlan({})}
+            titleFromNPS={plan.title}
+          />
+        </div>
+        :
+        !activities.length ? <div style={{
+          backgroundImage: 'url("https://wallpaperaccess.com/full/825191.jpg")',
+          height: '1000px',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'scroll',
+          backgroundPosition: '80% center',
+        }}/> :
         <div id="mainContent" className="container" style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px', gridAutoRows: 'minMax(100px, auto)'}}>
           {
           activities.map((activity, i) => <div key={i} className="card" style={{width: '18rem'}}>
@@ -57,7 +91,8 @@ const Explore = () => {
               <div className="card-body">
                 <h5 className="card-title">{activity.title}</h5>
                 <p className="card-text">{activity.shortDescription}</p>
-                <a href={activity.url} className="btn btn-primary" target="_blank">More Info</a>
+                <button style={{marginRight: '5px'}} onClick={() => window.open(activity.url)}>More Info</button>
+                <button onClick={() => addParkEvent(activity)}>Plan Event</button>
               </div>
             </div>)
           }
