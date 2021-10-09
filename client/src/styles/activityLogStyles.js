@@ -40,10 +40,19 @@ const Breadcrumb = styled.li`
   }
 `;
 
+const ExploreHeader = styled.div`
+  font-size: 25px;
+  color: #6c757d;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+`;
+
 export {
   ActivityLogItem,
   ActivityLogItemName,
   ActivityLogItemDate,
   ActivityLogItemTime,
-  Breadcrumb
+  Breadcrumb,
+  ExploreHeader
 }
