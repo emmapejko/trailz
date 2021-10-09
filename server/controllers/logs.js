@@ -56,7 +56,7 @@ const addDistAndTime = (req, res) => {
     seconds
   })
   .then(response => {
-    console.log(response);
+    //console.log(response);
     res.sendStatus(201);
   })
   .catch(err => {

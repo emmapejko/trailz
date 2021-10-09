@@ -10,7 +10,7 @@ import {
 
 const Log = ({ user, events, logs }) => {
 
-  const logEvents = events.filter(event => event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking');
+  const logEvents = events.filter(event => event.attendees.includes(`${user.firstName} ${user.lastName}`) && (event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking'));
 
   const organizeLogs = () => {
     const organizedLogs = [];
@@ -26,16 +26,17 @@ const Log = ({ user, events, logs }) => {
 
   //const logsInOrder = organizeLogs();
   //console.log('EVENTS: ', logEvents);
+  //console.log('LOGS ', logs);
   //console.log('LOGS IN ORDER: ',logsInOrder);
 
   return (
     <div>
       <ActivityLogItem>
       <ActivityLogItemName>Activity Type</ActivityLogItemName>
+      <ActivityLogItemDate>Date</ActivityLogItemDate>
       <ActivityLogItemTime>Distance (miles)</ActivityLogItemTime>
       <ActivityLogItemTime>Time (HH:MM:SS)</ActivityLogItemTime>
-      <ActivityLogItemTime>Submit</ActivityLogItemTime>
-      <ActivityLogItemDate>Date</ActivityLogItemDate>
+      <ActivityLogItemTime></ActivityLogItemTime>
     </ActivityLogItem>
       <div>
         {

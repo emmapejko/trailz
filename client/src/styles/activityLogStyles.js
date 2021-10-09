@@ -14,24 +14,45 @@ const ActivityLogItem = styled.div`
 const ActivityLogItemName = styled.span`
   display: flex;
   justify-content: flex-start;
-  width: 25%;
+  width: 20%;
 `;
 
 const ActivityLogItemDate = styled.span`
   display: flex;
   justify-content: center;
-  width: 25%;
+  width: 20%;
 `;
 
 const ActivityLogItemTime = styled.span`
   display: flex;
   justify-content: center;
-  width: 25%;
+  width: 20%;
 `
+
+const Breadcrumb = styled.li`
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
+const ExploreHeader = styled.div`
+  font-size: 25px;
+  color: #6c757d;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+`;
 
 export {
   ActivityLogItem,
   ActivityLogItemName,
   ActivityLogItemDate,
   ActivityLogItemTime,
+  Breadcrumb,
+  ExploreHeader
 }
