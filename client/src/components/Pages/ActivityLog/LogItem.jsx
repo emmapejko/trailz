@@ -15,7 +15,7 @@ const LogItem = ({ user, event, log }) => {
   const [seconds, setSeconds] = useState(log.seconds);
   const [color, setColor] = useState('black');
 
-  //console.log('EVENT: ', event._id, 'LOG: ', log.event);
+  //console.log('EVENT: ', event);
 
   const submitDistAndTime = () => {
     axios.put(`/logs/addlog/${log._id}`, {
@@ -31,7 +31,7 @@ const LogItem = ({ user, event, log }) => {
 
   return (
     <ActivityLogItem>
-      <ActivityLogItemName>{event.activity}</ActivityLogItemName>
+      <ActivityLogItemName>{event.eventName} ({event.activity})</ActivityLogItemName>
       <ActivityLogItemDate>{event.time.slice(0, 10)}</ActivityLogItemDate>
       <ActivityLogItemTime>
         <input
