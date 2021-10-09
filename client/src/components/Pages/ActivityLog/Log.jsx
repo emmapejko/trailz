@@ -10,7 +10,7 @@ import {
 
 const Log = ({ user, events, logs }) => {
 
-  const logEvents = events.filter(event => event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking');
+  const logEvents = events.filter(event => event.attendees.includes(`${user.firstName} ${user.lastName}`) && (event.activity === 'Running' || event.activity === 'Hiking' || event.activity === 'Biking'));
 
   const organizeLogs = () => {
     const organizedLogs = [];
