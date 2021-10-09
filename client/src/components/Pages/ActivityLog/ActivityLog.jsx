@@ -28,7 +28,7 @@ const ActivityLog = ({ user, events }) => {
       data.push([ activity, eventObj[activity] ]);
     });
 
-    console.log('EVENTS BY ACTIVITY TYPE: ', data);
+    //console.log('EVENTS BY ACTIVITY TYPE: ', data);
     setBarData(data);
   };
 
@@ -66,18 +66,6 @@ const ActivityLog = ({ user, events }) => {
           })
       }
     })
-  }
-
-  //get all logs associated with user
-  const getUserLogs = () => {
-    axios.get(`/logs/${user._id}`)
-      .then(({ data }) => {
-        console.log('LOGS FOR USER: ', data);
-        setLogs(data);
-      })
-      .catch(err => {
-        console.error(err);
-      })
   }
 
   const getView = () => {

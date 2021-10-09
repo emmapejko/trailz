@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { ExploreHeader } from '../../styles/activityLogStyles';
 import EventForm from '../Forms/EventForm.jsx';
-import EventModal from '../Modals/EventModal.jsx';
 
 const parks = {
   'Arches National Park': 'ARCH',
@@ -18,7 +17,7 @@ const parks = {
   'Yosemite National Park': 'YOSE',
 };
 
-const Explore = ({ user, addEvent, toggleSearch }) => {
+const Explore = ({ user, addEvent }) => {
   const [selected, setSelected] = useState('');
   const [activities, setActivities] = useState([]);
   const [plan, setPlan] = useState({});
