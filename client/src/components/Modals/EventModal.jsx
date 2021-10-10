@@ -56,7 +56,6 @@ const EventModal = ({ location, addEvent, toggleSearch }) => {
           </div>
           <EventForm
             location={location}
-            icon={icon}
             addEvent={addEvent}
             closeModal={closeModal}
           />
