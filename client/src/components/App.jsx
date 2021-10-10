@@ -142,6 +142,7 @@ const App = () => {
     const {
       parkId,
       name,
+      icon,
       address,
       location: { lat, lng },
     } = park;
@@ -150,6 +151,7 @@ const App = () => {
         parkId,
         name,
         address,
+        icon,
         lat,
         lng,
       })

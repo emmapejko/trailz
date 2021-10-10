@@ -9,6 +9,9 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  icon: {
+    type: String,
+  },
   location: {
     lat: {
       type: Number,
