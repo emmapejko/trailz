@@ -87,7 +87,7 @@ const Navbar = ({
                   </Item>
                   <Item className="nav-item">
                     <LinkCss as={Link} to="/favorite" className="nav-link">
-                      Favorite Trails
+                      Favorites
                     </LinkCss>
                   </Item>
                   <Item className="nav-item">
