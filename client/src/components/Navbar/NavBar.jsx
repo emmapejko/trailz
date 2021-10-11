@@ -99,11 +99,11 @@ const Navbar = ({
                       Events
                     </LinkCss>
                   </Item>
-                  <Item className="nav-item">
+                  {/* <Item className="nav-item">
                     <LinkCss as={Link} to="/species" className="nav-link">
                       Search Species
                     </LinkCss>
-                  </Item>
+                  </Item> */}
                   <Item className="nav-item">
                   <LinkCss as={Link} to="/weather" className="nav-link">
                     Weather
@@ -262,13 +262,13 @@ const Navbar = ({
             />
           </>
         </Route>
-        <Route path="/speciesSearch">
+        {/* <Route path="/species">
           <>
             <SpeciesSearch
               user={user}
             />
           </>
-        </Route>
+        </Route> */}
         <Route path="/ratings">
           <>
             <Ratings
