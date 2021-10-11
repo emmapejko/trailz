@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 import { OPEN_WEATHER_API_KEY } from '../../../../server/google-maps/API';
-
+import weatherStyles from '../../styles/weatherStyles.js';
 
 const Weather = () => {
 	
 	const [apiData, setApiData] = useState({});
-	const [getState, setGetState] = useState('new orleans');
+	const [getState, setGetState] = useState('');
 	const [state, setState] = useState('new orleans')
 
 	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${OPEN_WEATHER_API_KEY}`;
@@ -83,13 +83,13 @@ useEffect(() => {
 							<div className="row mt-4">
 								<div className="col-md-6">
 									<p>
-										<i className="fas fa-temperature-low "></i>{' '}
+										<i className="fas fa-temperature-low ">low: </i>{' '}
 										<strong>
 											{kelvinToFarenheit(apiData.main.temp_min)}&deg; F
 										</strong>
 									</p>
 									<p>
-										<i className="fas fa-temperature-high"></i>{' '}
+										<i className="fas fa-temperature-high">high: </i>{' '}
 										<strong>
 											{kelvinToFarenheit(apiData.main.temp_max)}&deg; F
 										</strong>

@@ -17,8 +17,10 @@ import Map from '../Pages/Map.jsx';
 import Login from '../Pages/Login.jsx';
 import ActivityLog from '../Pages/ActivityLog/ActivityLog.jsx';
 import Weather from '../Pages/Weather.jsx';
+import SpeciesSearch from '../Pages/SpeciesSearch.jsx';
 import Ratings from '../Pages/Ratings.jsx';
 import Explore from '../Pages/Explore.jsx';
+
 
 const Navbar = ({
   searchResults,
@@ -98,11 +100,17 @@ const Navbar = ({
                       Events
                     </LinkCss>
                   </Item>
+                  {/* <Item className="nav-item">
+                    <LinkCss as={Link} to="/species" className="nav-link">
+                      Search Species
+                    </LinkCss>
+                  </Item> */}
                   <Item className="nav-item">
                   <LinkCss as={Link} to="/weather" className="nav-link">
                     Weather
                   </LinkCss>
                   </Item>
+
                   <Item className="nav-item">
                     <LinkCss
                       as={Link}
@@ -253,6 +261,13 @@ const Navbar = ({
         <Route path="/weather">
           <>
             <Weather
+              user={user}
+            />
+          </>
+        </Route>
+        <Route path="/species">
+          <>
+            <SpeciesSearch
               user={user}
             />
           </>
