@@ -209,7 +209,7 @@ const Map = ({
             key={getKey()}
             position={item.location}
             icon={{
-              url: item.icon,
+              url: item.icon || getIcon(item.activity),
               scaledSize: new window.google.maps.Size(30, 30),
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 35),
