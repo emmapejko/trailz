@@ -262,13 +262,13 @@ const Navbar = ({
             />
           </>
         </Route>
-        {/* <Route path="/species">
+        <Route path="/species">
           <>
             <SpeciesSearch
               user={user}
             />
           </>
-        </Route> */}
+        </Route>
         <Route path="/ratings">
           <>
             <Ratings

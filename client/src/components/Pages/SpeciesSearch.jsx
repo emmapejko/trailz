@@ -7,6 +7,7 @@ const SpeciesSearch = () => {
   const [getState, setGetState] = useState('');
 
   const speciesApiUrl = 'https://explorer.natureserve.org/api/data/taxonSearch?ouSeqUid=ELEMENT_GLOBAL.2.154701'
+	const postApiUrl = 'https://explorer.natureserve.org/api/data/search'
 
 
   useEffect(() => {
@@ -14,7 +15,20 @@ const SpeciesSearch = () => {
     .then((data) => {
       console.log('animals data: ', data)
       setApiData(data.data)});
-    }, [speciesApiUrl]);
+    },
+		[speciesApiUrl]);
+
+		useEffect(() => {
+			axios.get(postApiUrl)
+			.then((data) => {
+				console.log('search results: ', data)
+				setApiData(data.data)
+			})
+		}, [postApiUrl]);
+
+
+
+
 
 
 	const inputHandler = (event) => {
@@ -22,7 +36,7 @@ const SpeciesSearch = () => {
 	};
 	
 	const submitHandler = () => {
-		setState(getState);
+		setState(setGetState);
 	};
 
 
@@ -51,7 +65,25 @@ const SpeciesSearch = () => {
 					</button>
 				</div>
 			</div>
-		
+
+			<div className="card mt-3 mx-auto" style={{ width: '60vw' }}>
+					{apiData.formattedScientificName ? (
+						<div className="card-body text-center">
+							<img
+								src={`https://explorer.natureserve.org/api/data/`}
+								alt="species photo"
+								className="species-icon"
+							/>
+							<p className="h2">
+							</p>
+							<p className="h5">
+								<strong>{apiData.formattedScientificName}</strong>
+							</p>
+						</div>
+					) : (
+						<h1>Loading....</h1>
+					)}
+				</div>
 		</div>
   )
 };
